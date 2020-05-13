@@ -1,0 +1,76 @@
+<div class="container-fluid search-div">
+  <div class="row">
+    <div class="col-md-12 search-div-inner">
+      <h3>Выбери поездку совей мечты</h3>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12 search-div-inner">
+      <form method="post" action="/registration/add">
+        <select name="" id="" class="search-select">
+          <option value="" disabled selected>Выбирите страну</option>
+          <ng-container *ngFor="let country of countries">
+            <option value="">{{country.counryName}}</option>
+          </ng-container>
+        </select>
+        <select name="" id="" class="search-select">
+          <option value="">500BYN</option>
+          <option value="">1000BYN</option>
+          <option value="">1500BYN</option>
+          <option value="">2500BYN</option>
+          <option value="">3000BYN</option>
+        </select>
+        <button type="submit" class="btn btn-primary search-btn">Поиск</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<div class="container-fluid mt-3">
+  <div class="row">
+    <h4 class="ml-3">Блог</h4>
+  </div>
+  <div class="row">
+    <ng-container *ngFor="let article of articles">
+    <div class="col-md-3 article-inner" >
+      <h3>{{article.articleHeader}}</h3>
+      <img src="{{article.photo.photoName}}" class="img-fluid article-img"/>
+    </div>
+    </ng-container>
+  </div>
+  <div class="row mt-4">
+    <div class="col-md-12 more-articles-div">
+      <button class="btn btn-secondary more-articles-btn">Больше статей</button>
+    </div>
+  </div>
+</div>
+
+<div class="container-fluid mt-3">
+  <div class="row">
+    <h3>Лучшие тур-операторы</h3>
+  </div>
+  <div class="row">
+    <table class="table">
+      <tr>
+        <td><h4>Название тур-фирмы</h4></td>
+        <td><h4>Рейтинг</h4></td>
+      </tr>
+      <ng-container *ngFor="let company of companies">
+      <tr>
+        <td><a href="#">{{company.tourCompName}}</a></td>
+        <td>{{company.tourCompRate}}</td>
+      </tr>
+      </ng-container>
+    </table>
+
+  </div>
+  <div class="row mt-4">
+    <div class="col-md-12 more-articles-div">
+      <button class="btn btn-secondary more-articles-btn">Показать все</button>
+    </div>
+  </div>
+</div>
+
+
+
+

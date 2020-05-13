@@ -1,0 +1,43 @@
+<div class="container-fluid header">
+  <div class="row">
+    <div class="col-md-12">
+      <h1>Туристические компании в Беларуси</h1>
+      <p class="ml-1">Найдено {{compsCount}} команий</p>
+    </div>
+  </div>
+</div>
+
+
+
+<div class="container-fluid">
+
+    <div class="row">
+      <div class="col-md-9">
+        <ng-container *ngFor="let company of tourComps">
+          <div class="company d-flex">
+            <img src="{{company.tourCompPhoto}}" alt="123" class="comp-logo">
+              <div class="d-flex flex-column ml-2">
+                <h1>{{company.tourCompName}}</h1>
+                <p>Адрес: {{company.tourCompAdress}}</p>
+                <a href="{{company.tourCompUrl}}">{{company.tourCompUrl}}</a>
+                <p>Рейтинг: {{company.tourCompRate}}</p>
+                <a class="btn btn-outline-success mt-4" (click)="setId()">Перейти</a>
+              </div>
+          </div>
+        </ng-container>
+      </div>
+      <div class="col-md-3">
+        <div class="containet-fluid search">
+          <div class="row">
+            <div class="col-md-12 d-flex justify-content-end">
+              <div class="example-full-width">
+                <label>Поиск по названию</label>
+                <input class="search-companies">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+</div>

@@ -1,0 +1,25 @@
+form{
+  margin-top: 25vh;
+}
+
+img{
+  width: 500px;
+}
+
+.formDiv{
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.picture-div{
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.error-message{
+  color: darkred;
+}
