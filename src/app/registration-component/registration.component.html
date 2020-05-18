@@ -3,7 +3,7 @@
     <div class="col-md-6 picture-div">
       <img src="http://localhost:8080/pics/beach.jpg"/>
     </div>
-    <div class="col-md-4 form-div">
+    <div class="col-md-4 form-div" *ngIf="isReg">
       <form>
         <div class="form-group">
           <label for="login">Логин</label>
@@ -20,11 +20,28 @@
           <label for="password">Пароль</label>
           <input type="password" ng class="form-control" id="password" aria-describedby="emailHelp" placeholder="Введите пароль" name="password" [(ngModel)]="password">
         </div>
-        <div class="form-check">
-          <input type="checkbox" class="form-check-input" id="exampleCheck1">
-          <label class="form-check-label" for="exampleCheck1">Check me out</label>
+        <div>
+          <a (click)="goAuth()" class="que">У вас уже есть аккаунт?</a>
         </div>
-        <button type="submit" (click)="save()" class="btn btn-primary">Зарегистрироваться</button>
+        <a type="submit" (click)="save()" class="btn btn-primary" >Зарегистрироваться</a>
+      </form>
+    </div>
+    <div class="col-md-4 form-div" *ngIf="isAuth">
+      <form>
+        <div class="form-group">
+          <label for="login">Логин</label>
+          <input type="text" class="form-control" id="login" aria-describedby="emailHelp" placeholder="Введите логин" name="login" [(ngModel)]="login">
+          <ng-container *ngIf="checkValid == 1"><p><span class="error-message">Логин уже занят</span></p></ng-container>
+        </div>
+
+        <div class="form-group">
+          <label for="password">Пароль</label>
+          <input type="password" ng class="form-control" id="password" aria-describedby="emailHelp" placeholder="Введите пароль" name="password" [(ngModel)]="password">
+        </div>
+        <div>
+          <a (click)="goAuth()" class="que">Хотите создать аккаунт?</a>
+        </div>
+        <a type="submit" (click)="save()" class="btn btn-primary" >Зарегистрироваться</a>
       </form>
     </div>
   </div>

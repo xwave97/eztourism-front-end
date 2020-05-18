@@ -27,12 +27,28 @@ export class TourCompSingleComponent implements OnInit{
 
 
   ngOnInit(){
+    this.loadCompany();
+  }
+
+  loadCompany(){
     this.id = +this.cookieService.get("tourCompId");
     this.service.getSingle(this.id).subscribe(response =>{
-      this.tourCompany = response[0];
-      console.log( this.tourCompany.tourCompPhoto);
-    })
+      this.tourCompany = response;
+    });
   }
+
+  pressLike(){
+    this.service.pressLike(1).subscribe(()=>{
+      this.loadCompany();
+    });
+  }
+
+  pressDislike(){
+    this.service.pressDislike(1).subscribe(()=>{
+      this.loadCompany();
+    });
+  }
+
 
 
 

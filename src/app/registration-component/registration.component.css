@@ -23,3 +23,11 @@ img{
 .error-message{
   color: darkred;
 }
+
+.que{
+  color: #007bff;
+}
+
+.que:hover{
+  cursor: pointer;
+}

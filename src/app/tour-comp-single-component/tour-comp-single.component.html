@@ -1,6 +1,3 @@
-<button></button>
-<button></button>
-
 <div class="container-fluid">
   <div class="row">
     <div class="col-md-12 d-flex">
@@ -16,11 +13,14 @@
   </div>
 </div>
 
-<div class="container-fluid">
+<div class="container-fluid mt-5">
 <div class="text">
   <p>{{tourCompany.tourCompDecription}}</p>
-  <h2>Рейтинг: {{tourCompany.tourCompRate}}</h2>
+  <h2>Рейтинг: {{tourCompany.tourCompLikes}}</h2>
+  <button class="btn btn-success mr-2" (click)="pressLike()">Like</button>
+  <button class="btn btn-danger" (click)="pressDislike()">Dislike</button>
 </div>
 </div>
+
 
 
