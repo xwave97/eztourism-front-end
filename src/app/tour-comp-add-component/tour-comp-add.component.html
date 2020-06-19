@@ -1,0 +1,16 @@
+<div class="container input-blog">
+  <input class="form-control" type="text" placeholder="Введите название турфирмы" [(ngModel)]="tourCompName">
+  <input type="text" [(ngModel)]="tourCompAdress" class="form-control mb-3" placeholder="Введите адрес компании">
+  <input type="text" [(ngModel)]="tourCompUrl" class="form-control" placeholder="Введите URL компании">
+  Выбирите логотип тур-фирмы
+  <label class="btn btn-default">
+    <input type="file" (change)="selectFile($event)" [(ngModel)]="photo">
+  </label>
+  <h3>Описание</h3>
+  <textarea [(ngModel)]="text"></textarea>
+  <button (click)="save()" class="btn btn-success">Добавить компанию</button>
+</div>
+
+
+
+

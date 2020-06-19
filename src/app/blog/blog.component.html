@@ -1,0 +1,17 @@
+<div class="container">
+  <h3>Блог</h3>
+</div>
+
+<div class="container">
+  <div class="row d-flex">
+    <ng-container *ngFor="let article of articles">
+      <div class="col-md-3">
+        <div class="article d-flex flex-column mb-5">
+          <a (click)="setId(article.articleId)"><img src="{{article.articlePhoto}}" class="img-fluid article-img"/>
+          <h3>{{article.articleHeader}}</h3></a>
+          <p [innerHTML]="article.articleText.substring(0,150)"></p>
+        </div>
+      </div>
+    </ng-container>
+  </div>
+</div>

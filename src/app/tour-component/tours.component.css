@@ -1,0 +1,84 @@
+.tour-logo{
+  width: 250px;
+  height: 210px;
+}
+.tour{
+  margin-bottom: 1em;
+  padding: 1em;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, .2);
+}
+
+
+@import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro);
+
+body {
+  background: #ffffff;
+  color: #414141;
+  font: 400 17px/2em 'Source Sans Pro', sans-serif;
+}
+
+.select-box {
+  cursor: pointer;
+  position : relative;
+  max-width:  20em;
+  margin: 5em auto;
+  width: 100%;
+}
+
+.select,
+.label {
+  color: #414141;
+  display: block;
+  font: 400 17px/2em 'Source Sans Pro', sans-serif;
+}
+
+.select {
+  width: 100%;
+  position: absolute;
+  top: 0;
+  padding: 5px 0;
+  height: 40px;
+  opacity: 0;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+  background: none transparent;
+  border: 0 none;
+}
+.select-box1 {
+  background: #ececec;
+}
+
+.label {
+  position: relative;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+.open .label::after {
+  content: "▲";
+}
+.label::after {
+  content: "▼";
+  font-size: 12px;
+  position: absolute;
+  right: 0;
+  top: 0;
+  padding: 5px 15px;
+  border-left: 5px solid #fff;
+}
+
+.header-tour{
+  width: 100%;
+}
+
+.tour{
+  width: 100%;
+}
+
+.tour-name{
+  color: #6c757d;
+  font-size: 16pt;
+  padding-left: 15px;
+}
+
+.tour-price{
+  font-size: 30px;
+}

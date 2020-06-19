@@ -29,19 +29,21 @@
     <div class="col-md-4 form-div" *ngIf="isAuth">
       <form>
         <div class="form-group">
+          <ng-container *ngIf="checkAuthValid == null">
+            <p><span class="error-auth">Неверный логин или пароль</span></p>
+          </ng-container>
           <label for="login">Логин</label>
-          <input type="text" class="form-control" id="login" aria-describedby="emailHelp" placeholder="Введите логин" name="login" [(ngModel)]="login">
+          <input type="text" class="form-control" id="logina" aria-describedby="emailHelp" placeholder="Введите логин" name="login" [(ngModel)]="loginAuth">
           <ng-container *ngIf="checkValid == 1"><p><span class="error-message">Логин уже занят</span></p></ng-container>
         </div>
-
         <div class="form-group">
           <label for="password">Пароль</label>
-          <input type="password" ng class="form-control" id="password" aria-describedby="emailHelp" placeholder="Введите пароль" name="password" [(ngModel)]="password">
+          <input type="password" ng class="form-control" id="passworda" aria-describedby="emailHelp" placeholder="Введите пароль" name="password" [(ngModel)]="passwordAuth">
         </div>
         <div>
-          <a (click)="goAuth()" class="que">Хотите создать аккаунт?</a>
+          <a (click)="goReg()" class="que">Хотите создать аккаунт?</a>
         </div>
-        <a type="submit" (click)="save()" class="btn btn-primary" >Зарегистрироваться</a>
+        <a type="submit" (click)="auth()" class="btn btn-primary" >Авторизироваться</a>
       </form>
     </div>
   </div>

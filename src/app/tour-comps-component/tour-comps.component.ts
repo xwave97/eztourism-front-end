@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, ComponentFactoryResolver, OnInit} from '@angular/core';
 import {TourCompService} from '../services/tourcomp.service';
 import {Observable} from 'rxjs';
 import {DataService} from '../services/date-service.service';
@@ -11,30 +11,44 @@ import {CookieService} from 'ngx-cookie-service';
   styleUrls:['./tour-comps.component.css']
 })
 export class TourCompsComponent implements OnInit{
-  title = 'eztourism-front-end';
 
   constructor(private service: TourCompService,
               private dataService: DataService,
               private route: Router,
-              private cookieService: CookieService){}
+              private cookieService: CookieService,
+              private componentFactoryResolver: ComponentFactoryResolver){}
 
   tourComps: Observable<any>;
   compsCount: number;
+  tourCompId: number;
+  tourCompFilt= "";
 
   ngOnInit(){
     this.loadCompanies();
   }
 
   loadCompanies(){
-    this.service.getAll().subscribe(response =>{
-      this.tourComps = response;
-      this.compsCount = response.length;
-    })
-
+    console.log(this.tourCompFilt);
+    if(this.tourCompFilt === ""){
+      this.service.getAll("undefined").subscribe(response =>{
+        this.tourComps = response;
+        this.compsCount = response.length;
+      })
+    }
+    if(this.tourCompFilt !== ""){
+      this.service.getAll(this.tourCompFilt).subscribe(response =>{
+        console.log("Проверочка!!!")
+        this.tourComps = response;
+        this.compsCount = response.length;
+      })
+    }
   }
 
-  setId(){
-    this.cookieService.set("tourCompId", "1");
+
+
+  setId(tourCompid: number){
+    let value = tourCompid+"";
+    this.cookieService.set("tourCompId", value);
     console.log(this.cookieService.get("tourCompId"));
     // this.dataService.setData(1);
     this.route.navigate(["/singleTourComp"]);

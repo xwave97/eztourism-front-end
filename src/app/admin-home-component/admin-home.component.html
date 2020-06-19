@@ -1,0 +1,133 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-3">
+      <h1>Панель-Администратора</h1>
+      <div class="d-flex flex-column">
+        <button class="btn btn-primary mb-2" (click)="goToUsers()">Пользователи</button>
+        <button class="btn btn-primary mb-2" (click)="goToArticles()">Статьи</button>
+        <button class="btn btn-primary mb-2" (click)="goToTours()">Туры</button>
+        <button class="btn btn-primary mb-2" (click)="goToTourComps()">Тур-компании</button>
+        <button class="btn btn-primary mb-2" (click)="goToContries()">Страны</button>
+        <button class="btn btn-primary mb-2" (click)="goToTourTypes()">Типы туров</button>
+        <button class="btn btn-primary mb-2" (click)="goToStartCities()">Города отправки</button>
+      </div>
+    </div>
+    <div class="col-md-1"></div>
+    <div class="col-md-8">
+      <table class="table">
+        <ng-container *ngIf="isUsers">
+          <h3>Пользователи</h3>
+          <tr>
+            <td>№ пользователя</td><td>Логин</td><td>Электронная почта</td><td>Действия</td>
+          </tr>
+          <ng-container *ngFor="let user of users">
+              <tr>
+                <td>{{user.userId}}</td>
+                <td>{{user.userName}}</td>
+                <td>{{user.userEmail}}</td>
+                <td><span class="text-primary crud" (click)="deleteUser(user.userId)">Удалить</span></td>
+              </tr>
+          </ng-container>
+        </ng-container>
+
+
+        <ng-container *ngIf="isArticles">
+          <h3>Статьи</h3>
+          <a class="btn btn-success" href="/addblog">Добавить</a>
+          <tr>
+            <td>Заголовок</td><td>Действия</td>
+          </tr>
+          <ng-container *ngFor="let article of articles">
+            <tr>
+              <td>{{article.articleHeader}}</td>
+              <td><span class="text-primary crud" (click)="deleteArticle(article.articleId)">Удалить</span></td>
+            </tr>
+          </ng-container>
+        </ng-container>
+
+
+        <ng-container *ngIf="isTours">
+          <h3>Туры</h3>
+          <a href="addtour" class="btn btn-success">Добавить</a>
+          <tr>
+            <td>Название</td><td>Цена</td><td>Длительность</td><td>Дата начала</td><td>Дата окончания</td><td>Страна</td><td>Город отправления</td><td>Тип</td><td>Действия</td>
+          </tr>
+          <ng-container *ngFor="let tour of tours">
+            <tr>
+              <td>{{tour.tourName}}</td>
+              <td>{{tour.tourPrice}}</td>
+              <td>{{tour.tourDuring}}</td>
+              <td>{{tour.tourStart}}</td>
+              <td>{{tour.tourEnd}}</td>
+              <td>{{tour.country.counryName}}</td>
+              <td>{{tour.startCity.startCityName}}</td>
+              <td>{{tour.tourType.tourTypeName}}</td>
+              <td><span class="text-primary crud" (click)="deleteTour(tour.tourId)">Удалить</span></td>
+            </tr>
+          </ng-container>
+        </ng-container>
+
+        <ng-container *ngIf="isTourComps">
+          <h3>Компании</h3>
+          <a href="addtourcomp" class="btn btn-success">Добавить</a>
+          <tr>
+            <td>Название</td><td>Адрес</td><td>Сайт</td><td>Действия</td>
+          </tr>
+          <ng-container *ngFor="let comp of tourComps">
+            <tr>
+              <td>{{comp.tourCompName}}</td>
+              <td>{{comp.tourCompAdress}}</td>
+              <td>{{comp.tourCompUrl}}</td>
+              <td><span class="text-primary crud" (click)="deleteTourComp(comp.tourCompId)">Удалить</span></td>
+            </tr>
+          </ng-container>
+        </ng-container>
+
+        <ng-container *ngIf="isCountries">
+          <h3>Страны</h3>
+          <button (click)="addCountry()" class="btn btn-success mt-2">Добавить</button>
+          <input type="text" class="form-control mt-2 mb-2" placeholder="Введите название новой страны" [(ngModel)]="countryName">
+          <tr>
+            <td>Название страны</td><td>Действия</td>
+          </tr>
+          <ng-container *ngFor="let country of countries">
+            <tr>
+              <td>{{country.counryName}}</td>
+              <td><span class="text-primary crud" (click)="deleteCountry(country.countryId)">Удалить</span></td>
+            </tr>
+          </ng-container>
+        </ng-container>
+
+        <ng-container *ngIf="isTourTypes">
+          <h3>Типы туров</h3>
+          <button (click)="addTourType()" class="btn btn-success mt-2">Добавить</button>
+          <input type="text" class="form-control mt-2 mb-2" placeholder="Введите новый тип тура" [(ngModel)]="tourTypeName">
+          <tr>
+            <td>Тип</td><td>Действия</td>
+          </tr>
+          <ng-container *ngFor="let tourType of tourTypes">
+            <tr>
+              <td>{{tourType.tourTypeName}}</td>
+              <td><span class="text-primary crud" (click)="deleteTourType(tourType.tourTypeId)">Удалить</span></td>
+            </tr>
+          </ng-container>
+        </ng-container>
+
+        <ng-container *ngIf="isStartCities">
+          <h3>Города отправки</h3>
+          <button (click)="addStartCity()" class="btn btn-success mt-2">Добавить</button>
+          <input type="text" class="form-control mt-2 mb-2" placeholder="Введите название нового города отправки" [(ngModel)]="startCityName">
+          <tr>
+            <td>Название города</td><td>Действия</td>
+          </tr>
+          <ng-container *ngFor="let city of startCities">
+            <tr>
+              <td>{{city.startCityName}}</td>
+              <td><span class="text-primary crud" (click)="deleteStartCity(city.startCityId)">Удалить</span></td>
+            </tr>
+          </ng-container>
+        </ng-container>
+      </table>
+    </div>
+  </div>
+</div>

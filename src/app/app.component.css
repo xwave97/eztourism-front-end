@@ -5,8 +5,29 @@
   justify-content: center;
 }
 
-.container-fluid{
+
+.navbar{
   margin: 0;
   padding-top: 1em;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, .2);
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, .2);
+  /*width: 100%;*/
+}
+
+.footer{
+  margin: 0;
+  padding-top: 1em;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, .2);
+}
+
+.coutnry{
+  color: #007bff;
+  cursor: pointer;
+}
+
+.to-the-top{
+  border-radius: 360px;
+  width: 100px;
+  height: 100px;
+  padding-top: 40px;
+
 }

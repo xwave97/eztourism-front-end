@@ -1,0 +1,12 @@
+.btn{
+  width: 200px;
+}
+
+.crud{
+  font-size: 8pt;
+  cursor: pointer;
+}
+
+.crud:hover{
+  text-decoration: underline;
+}

@@ -1,4 +1,4 @@
-<div class="container-fluid search-div">
+<div class="container search-div">
   <div class="row">
     <div class="col-md-12 search-div-inner">
       <h3>Выбери поездку совей мечты</h3>
@@ -6,48 +6,95 @@
   </div>
   <div class="row">
     <div class="col-md-12 search-div-inner">
-      <form method="post" action="/registration/add">
-        <select name="" id="" class="search-select">
-          <option value="" disabled selected>Выбирите страну</option>
+      <h5>Выбирайте страну</h5>
+        <select [(ngModel)]="countryId" class="mb-3 form-control" id="country" >
+          <option value="0" selected>Любая страна</option>
           <ng-container *ngFor="let country of countries">
-            <option value="">{{country.counryName}}</option>
+            <option value="{{country.countryId}}">{{country.counryName}}</option>
           </ng-container>
         </select>
-        <select name="" id="" class="search-select">
-          <option value="">500BYN</option>
-          <option value="">1000BYN</option>
-          <option value="">1500BYN</option>
-          <option value="">2500BYN</option>
-          <option value="">3000BYN</option>
-        </select>
-        <button type="submit" class="btn btn-primary search-btn">Поиск</button>
-      </form>
+
+        <button type="submit" class="btn btn-primary search-btn" (click)="search()">Поиск</button>
     </div>
   </div>
 </div>
 
-<div class="container-fluid mt-3">
+
+<div class="container mt-3">
+  <div class="header-about text-center mb-5">
+    <h2>Что такое EzTourism?</h2>
+  </div>
+  <div class="row about">
+    <div class="col-md-6">
+      <img src="http://localhost:8080/pics/busy2.jpg" alt="" class="img-about">
+    </div>
+    <div class="col-md-6 d-flex text-center">
+      <p>
+        Решил съездить съездить в отпуск на море,
+        но не понимаешь, что для этого нужно? Голова кипит от
+        количества бумаг для заполнения? А может который раз ты уже делаешь ошибку
+        в анкете на визу?
+        Да всё нам это знакомо. Чтоб уехать неопытному туристу за границу - это надо
+        пройти 7 кругов ада. Визы, путёвки, билеты. И хорошо, если тур-компаниия качественно выполняет свою
+        работу: берёт оформление на себя. Есть же тур-фирмы, которые за это беерут отдельную плату или вообще осталяют вас 1 на 1
+        со всей документацией.
+      </p>
+    </div>
+  </div>
+  <div class="row about">
+    <div class="col-md-6 d-flex text-center">
+      А может прошлая поездка оказалась ужасной? Или тур-компания тебя обманула?
+      И вообще в прошлый раз ты устал от отпуска, больше чем на работе?
+      Потратил крупную сумму на 5-ти звёздочный отель, а он едва дотягивал до 3-ёх звёзд?
+      Думаешь, лучше уже отдыхать на даче у озера?
+      Не торопись с выводами, скорее всего ты просто не набрался опыта в сфере туризма.
+      Благодаря нашему ресурсу ты больше никогда не ошибёшься с поездкой. Всё будет так как ты именно
+      этого захочешь.
+    </div>
+    <div class="col-md-6">
+      <img src="http://localhost:8080/pics/angry-man.jpg" alt="" class="img-about">
+    </div>
+  </div>
+  <div class="row about mt-5">
+    <div class="col-md-6">
+      <img src="http://localhost:8080/pics/consult.png" alt="" class="img-about">
+    </div>
+    <div class="col-md-6 text-center">
+      <b>Решение есть!</b> Вы обратились по адресу!
+      Мы, компания "EzTourism", собрали для вас информацию о всём, что связанно с поездками за границу.
+      Всё о самых известных тур-фирмах, Минска, плюс ко всему вы можете увидеть отзывы других пользователей, о той или иной компани.
+      Так же без проблем можете найти нужный тур не заходя на каждый сайт компании, чтобы выбрать подходящий.
+      Мало? Нужно Больше информации?
+      Наш офис находится по адресу М.Лынькова 23а. Приезжайте и получите консультацию по всем интересующим вас вопросам.
+    </div>
+  </div>
+</div>
+
+
+
+<div class="container mt-3">
   <div class="row">
     <h4 class="ml-3">Блог</h4>
   </div>
   <div class="row">
     <ng-container *ngFor="let article of articles">
-    <div class="col-md-3 article-inner" >
-      <h3>{{article.articleHeader}}</h3>
-      <img src="{{article.photo.photoName}}" class="img-fluid article-img"/>
-    </div>
+      <div class="col-md-3 article-inner" >
+        <img src="{{article.articlePhoto}}" class="img-fluid article-img"/>
+        <h3>{{article.articleHeader}}</h3>
+      </div>
     </ng-container>
   </div>
   <div class="row mt-4">
     <div class="col-md-12 more-articles-div">
-      <button class="btn btn-secondary more-articles-btn">Больше статей</button>
+      <a href="/blog" class="btn btn-secondary more-articles-btn">Больше статей</a>
     </div>
   </div>
 </div>
 
-<div class="container-fluid mt-3">
+
+<div class="container mt-3">
   <div class="row">
-    <h3>Лучшие тур-операторы</h3>
+    <h3 class="ml-2">Лучшие тур-операторы</h3>
   </div>
   <div class="row">
     <table class="table">
@@ -56,7 +103,7 @@
         <td><h4>Рейтинг</h4></td>
       </tr>
       <ng-container *ngFor="let company of companies">
-      <tr>
+      <tr class="ml-2">
         <td><a href="#">{{company.tourCompName}}</a></td>
         <td>{{company.tourCompLikes}}</td>
       </tr>
@@ -66,11 +113,30 @@
   </div>
   <div class="row mt-4">
     <div class="col-md-12 more-articles-div">
-      <button class="btn btn-secondary more-articles-btn">Показать все</button>
+      <a class="btn btn-secondary more-articles-btn" href="tourComps">Показать все</a>
     </div>
   </div>
 </div>
 
 
+<div class="container mt-3">
 
-
+  <div class="row">
+    <h4 class="ml-3">Популярные туры</h4>
+  </div>
+  <div class="row">
+    <ng-container *ngFor="let tour of tours">
+      <div class="col-md-3 article-inner flex-nowrap d-flex" >
+        <div>
+          <img src="{{tour.tourPhoto}}" class="img-fluid article-img"/>
+          <h3>{{tour.tourName}}</h3>
+        </div>
+      </div>
+    </ng-container>
+  </div>
+  <div class="row mt-4">
+    <div class="col-md-12 more-articles-div">
+      <a class="btn btn-secondary more-articles-btn" href="tours">Посмотреть все</a>
+    </div>
+  </div>
+</div>

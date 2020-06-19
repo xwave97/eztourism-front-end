@@ -1,0 +1,74 @@
+<div class="container">
+  <h3>Туры</h3>
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-9">
+      <ng-container *ngFor="let tour of tours">
+        <div class="tour d-flex">
+          <img src="{{tour.tourPhoto}}" alt="123" class="tour-logo">
+          <div class="d-flex flex-column ml-2 header-tour">
+            <div class="row d-flex justify-content-between">
+              <h3><span class="tour-name">{{tour.tourName}}</span></h3>
+              <p><span class="tour-price text-success">{{tour.tourPrice}}BYN</span></p>
+            </div>
+            <p>{{tour.tourDecription}}</p>
+            <div class="tour d-flex flex-column">
+              <p>вылет из: {{tour.startCity.startCityName}}</p>
+              <p>дата вылета: {{tour.tourStart}}</p>
+             <p>дата возвращения: {{tour.tourEnd}}</p>
+              <p>длительность: {{tour.tourDuring}}Дней</p>
+              <p>тип тура: {{tour.tourType.tourTypeName}}</p>
+            </div>
+            <a class="btn btn-outline-success mt-1" href="{{tour.tourCompany.tourCompUrl}}">Подробнее на сайте</a>
+          </div>
+        </div>
+      </ng-container>
+    </div>
+<!--    <div class="col-md-1"></div>-->
+    <div class="col-md-3">
+      <div class="containet search">
+        <div class="row">
+          <div class="col-md-12 d-flex justify-content-end flex-column">
+            <label class="" for="tourType">Тип тура</label>
+              <select [(ngModel)]="tourTypeId" class="mb-3 form-control" (change)="loadContent()" id="tourType">
+                <option value="undefined" selected>Любой тур</option>
+                <ng-container *ngFor="let tourType of tourTypes">
+                    <option value="{{tourType.tourTypeId}}">{{tourType.tourTypeName}}</option>
+                </ng-container>
+              </select>
+            <label class="" for="startCity">Город отправки</label>
+              <select [(ngModel)]="startCityId" class="mb-3 form-control" id="startCity" (change)="loadContent()" >
+                <option value="undefined" selected>Любой город отправки</option>
+                <ng-container *ngFor="let startCity of startCities">
+                  <option value="{{startCity.startCityId}}">{{startCity.startCityName}}</option>
+                </ng-container>
+              </select>
+            <label class="" for="country">Страна</label>
+            <select [(ngModel)]="countryId" class="mb-3 form-control"  (change)="loadContent()" >
+              <option value="undefined" selected>Любая страна</option>
+              <ng-container *ngFor="let country of countries">
+                <option value="{{country.countryId}}">{{country.counryName}}</option>
+              </ng-container>
+            </select>
+
+            <select [(ngModel)]="price" class="mb-3 form-control"  (change)="loadContent()" >
+              <option value="undefined" selected>Цена</option>
+                <option value="500">до 500</option>
+              <option value="1000">до 1000</option>
+              <option value="1500">до 1500</option>
+              <option value="2000">до 2000</option>
+
+            </select>
+            <label class="" for="date">Дата тура</label>
+            <input type="date" placeholder="дата" [(ngModel)]="date" class="mb-3 form-control" (ngModelChange)="loadContent()" >
+<!--              <input type="text" placeholder="Цена" [(ngModel)]="price" class="mb-3 form-control" (input)="loadContent()">-->
+            <input type="during" placeholder="Длительность" [(ngModel)]="during" class="mb-3 form-control" (input)="loadContent()">
+            <button class="btn btn-primary" (click)="clear()">Очистить</button>
+          </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

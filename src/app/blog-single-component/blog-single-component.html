@@ -1,0 +1,10 @@
+<div class="container header-div d-flex align-items-center justify-content-center" [style.background]="'url(' + article.articlePhoto + ')'">
+  <div class="header-text">
+    <h2>{{article.articleHeader}}</h2>
+  </div>
+</div>
+
+
+<div class="container">
+<p [innerHTML]="article.articleText"></p>
+</div>

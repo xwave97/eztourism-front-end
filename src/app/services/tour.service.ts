@@ -1,35 +1,32 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpEvent, HttpRequest} from '@angular/common/http';
 import {Observable} from 'rxjs';
-import {Article} from "../model/Article";
+import {FilterDTO} from "../dto/FilterDTO";
+import {Tour} from "../model/Tour";
 
 @Injectable({
   providedIn: 'root'
 })
-export class ArticleService {
+export class TourService {
 
   constructor(private http: HttpClient) {
   }
   getAll(): Observable<any>{
-    return this.http.get('//localhost:8080/article/show');
+    return this.http.get(`//localhost:8080/tour/show`);
   }
 
-  getSingle(id: number): any{
-    return this.http.get(`//localhost:8080/article/showSingle/${id}`);
+  add(tour: Tour){
+    return this.http.post(`//localhost:8080/tour/add`, tour)
   }
 
-  getFour(): Observable<any>{
-    return this.http.get('//localhost:8080/article/showfour');
+  getByFilters(filter: FilterDTO): Observable<any>{
+    return this.http.get(`//localhost:8080/tour/show/${filter.tourTypeId}/${filter.cityStartId}/${filter.countryId}/${filter.price}/${filter.during}/${filter.date}`);
   }
 
-  add(article: Article){
-    return this.http.post('//localhost:8080/article/add', article)
-  }
 
   delete(id: number){
-    return this.http.delete(`//localhost:8080/article/delete/${id}`)
+    return this.http.delete(`//localhost:8080/tour/delete/${id}`)
   }
-
 
   pushFileToStorage(file: File): Observable<HttpEvent<{}>> {
     let formdata: FormData = new FormData();
@@ -43,7 +40,4 @@ export class ArticleService {
 
     return this.http.request(req);
   }
-
-
-
 }

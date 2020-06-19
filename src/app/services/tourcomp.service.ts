@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpEvent, HttpRequest} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {TourComp} from "../model/TourComp";
 
@@ -10,8 +10,12 @@ export class TourCompService {
 
   constructor(private http: HttpClient) {
   }
-  getAll(): Observable<any>{
-    return this.http.get('//localhost:8080/tourComp/show');
+  getAll(str: String): Observable<any>{
+    return this.http.get(`//localhost:8080/tourComp/show/${str}`);
+  }
+
+  add(tourComp: TourComp){
+    return this.http.post(`//localhost:8080/tourComp/add`, tourComp)
   }
 
   getSingle(id: number): any{
@@ -24,5 +28,22 @@ export class TourCompService {
 
   pressDislike(id: number){
     return this.http.put(`//localhost:8080/tourComp/setDislike/${id}`, 1);
+  }
+
+  delete(id: number){
+    return this.http.delete(`//localhost:8080/tourComp/delete/${id}`)
+  }
+
+  pushFileToStorage(file: File): Observable<HttpEvent<{}>> {
+    let formdata: FormData = new FormData();
+
+    formdata.append('file', file);
+
+    const req = new HttpRequest('POST', '//localhost:8080/upload/post', formdata, {
+      reportProgress: true,
+      responseType: 'text'
+    });
+
+    return this.http.request(req);
   }
 }

@@ -1,5 +1,8 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="#">EzTourism</a>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light ">
+  <a name="top"></a>
+  <div class="container">
+  <a class="navbar-brand" href="">EzTourism</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -10,29 +13,28 @@
           Туризм
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink1">
-          <a class="dropdown-item" href="#">Action</a>
-          <a class="dropdown-item" href="#">Another action</a>
-          <a class="dropdown-item" href="#">Something else here</a>
+          <a class="dropdown-item" href="tours">Туры</a>
+          <a class="dropdown-item" href="tourComps">Турфирмы</a>
+
         </div>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink2" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Популярное
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink2">
-          <a class="dropdown-item" href="#">Action</a>
-          <a class="dropdown-item" href="#">Another action</a>
-          <a class="dropdown-item" href="#">Something else here</a>
+          <a class="dropdown-item" (click)="searchEgypt()">Египет</a>
+          <a class="dropdown-item" (click)="searchTurkey()">Турция</a>
+          <a class="dropdown-item" (click)="searchBulgaria()">Болгария</a>
         </div>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink3" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Общая информация
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink3">
-          <a class="dropdown-item" href="#">Action</a>
-          <a class="dropdown-item" href="#">Another action</a>
-          <a class="dropdown-item" href="#">Something else here</a>
+          <a class="dropdown-item" href="contact">О нас</a>
         </div>
       </li>
+
 
     </ul>
     <ng-container *ngIf="userName === ''">
@@ -49,42 +51,49 @@
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink4">
             <a class="dropdown-item"  (click)="deleteCookie()">Выйти</a>
+            <ng-container *ngIf="userName == 'admin'">
+            <a href="adminhome">Админ-панель</a>
+            </ng-container>
           </div>
         </li>
         </ul>
       </div>
     </ng-container>
   </div>
+  </div>
 </nav>
 
 <router-outlet></router-outlet>
-<div class="footer container-fluid">
+
+<div class="footer">
+  <div class="container">
   <div class="row">
-    <div class="col-md-4">
+    <div class="col-md-3">
       <div class="footer-menu">
         <h3>Туризм</h3>
-        <a href="">Туры</a>
-        <a href="">Горящие туры</a>
-        <a href="">Турфирмы</a>
-        <a href="">Визы</a>
+        <a href="tours">Туры</a>
+        <a href="tourComps">Турфирмы</a>
       </div>
     </div>
-    <div class="col-md-4">
+    <div class="col-md-3">
       <div class="footer-menu">
         <h3>Популярное</h3>
-        <a href="">Египет</a>
-        <a href="">Турция</a>
-        <a href="">Кипр</a>
-        <a href="">Болгария</a>
+        <a class="coutnry" (click)="searchEgypt()">Египет</a>
+        <a class="coutnry" (click)="searchTurkey()">Турция</a>
+        <a class="coutnry" (click)="searchBulgaria()">Болгария</a>
       </div>
     </div>
-    <div class="col-md-4">
+    <div class="col-md-3">
       <div class="footer-menu">
         <h3>Общая информация</h3>
-        <a href="">Контакты</a>
         <a href="">О нас</a>
-        <a href="">Мы на карте</a>
       </div>
     </div>
+    <div class="col-md-3">
+      <div class="footer-menu">
+        <a href="#top" class="btn btn-primary to-the-top">Наверх</a>
+      </div>
+    </div>
+  </div>
   </div>
 </div>

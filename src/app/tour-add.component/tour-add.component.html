@@ -1,0 +1,48 @@
+<div class="container input-blog">
+  <input class="form-control" type="text" placeholder="Введите название тура" [(ngModel)]="tourName">
+  <input type="text" [(ngModel)]="tourPrice" class="form-control mb-2" placeholder="Введите цену тура">
+  Дата начала
+  <input type="date" [(ngModel)]="tourStartDate" class="form-control mb-2">
+  Дата завершения
+  <input type="date" [(ngModel)]="tourEndDate" class="form-control mb-2">
+  <div class="select d-flex">
+    <select [(ngModel)]="countryId" class="mb-3 form-control" id="country" >
+      <option value="undefined" selected disabled>Выбирете страну</option>
+      <ng-container *ngFor="let country of countries">
+        <option value="{{country.countryId}}">{{country.counryName}}</option>
+      </ng-container>
+    </select>
+
+    <select [(ngModel)]="tourTypeId" class="mb-3 form-control" >
+      <option value="undefined" selected disabled>Выбирете тип тура</option>
+      <ng-container *ngFor="let tourType of tourTypes">
+        <option value="{{tourType.tourTypeId}}">{{tourType.tourTypeName}}</option>
+      </ng-container>
+    </select>
+
+    <select [(ngModel)]="startCityId" class="mb-3 form-control" >
+      <option value="undefined" selected disabled>Выбирете город отправки</option>
+      <ng-container *ngFor="let city of startCities">
+        <option value="{{city.startCityId}}">{{city.startCityName}}</option>
+      </ng-container>
+    </select>
+
+    <select [(ngModel)]="tourCompId" class="mb-3 form-control"  >
+      <option value="undefined" selected disabled>Выбирете компанию предоставляюшую тур</option>
+      <ng-container *ngFor="let comp of tourComps">
+        <option value="{{comp.tourCompId}}">{{comp.tourCompName}}</option>
+      </ng-container>
+    </select>
+  </div>
+  Выбирите логотип тур-фирмы
+  <label class="btn btn-default">
+    <input type="file" (change)="selectFile($event)" [(ngModel)]="photo">
+  </label>
+  <h5>Описание</h5>
+  <textarea [(ngModel)]="text"></textarea>
+  <button (click)="save()" class="btn btn-success">Добавить тур</button>
+</div>
+
+
+
+

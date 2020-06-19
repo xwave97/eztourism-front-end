@@ -1,0 +1,15 @@
+<div class="container input-blog">
+  <input class="form-control" type="text" placeholder="Введите ваш заголовок" [(ngModel)]="header">
+  Выбирите заголовочное фото
+  <label class="btn btn-default">
+    <input type="file" (change)="selectFile($event)" [(ngModel)]="photo">
+  </label>
+  <p>(для формирования абзацев используйте тэг &lt;p&gt;)</p>
+
+  <textarea [(ngModel)]="text"></textarea>
+  <button (click)="save()" class="btn btn-success">Добавить статью</button>
+</div>
+
+
+
+
